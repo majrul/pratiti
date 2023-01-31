@@ -1,0 +1,41 @@
+1. Write a Java program which will read two numbers as an input from the user.
+   Then ask the user to specify whether he/she wants to add or subtract
+   Based on the input, add/sub the two numbers and display the result
+
+ 2. Create an application which stores details for 2 different types of Products.
+
+- Following info has to be present
+  Product Name
+  Unique Identification for the Product
+  Type of Product (Books/Toys)
+  Stock available in hand
+  Product Price
+  Description of product
+
+- Following processes should be assigned to the abstraction to achieve ability to :
+  Create an object by passing Name and total stock available
+  Display all info
+  Change description of Product
+  Order a product by name and qty and generate the Bill amount
+  Calculate Discount
+
+- Following are some constraints/conditions on the above process depending on the type : 
+  Order
+  - Qty Ordered should be check against the stock available
+  - Calculating discount
+    Type = Books
+    - Discount Rate : 10 % per Book
+    Type = Toys
+    - Discount Rate : 15 % on total amount for all Toys which are for those kid in the age range of 2-4 Yrs
+    - Discount Rate : 5 % on total amount for all Toys which are for those kid in the age range of 4-5 Yrs
+    - Discount Rate:  No discount above age 5
+
+Finally In the application create 4 Object of Product (2 of each type)
+Hard code the values at the time of object creation in application.
+Test all the processes mentioned for each type.
+
+
+
+
+
+
