@@ -1,0 +1,72 @@
+Java
+- Programming Language
+  - Similar to C/C++, Python, C#, etc...
+- TODO
+  - Common features of Java
+- To get started with Java
+  - Install JDK
+    - Libraries
+    - Basic tools & utilities
+    - Runtime/JVM
+  - Install IDE (Eclipse, IntelliJ, VS Code, ...)
+
+HelloWorld.java
+----------------
+public class HelloWorld {
+
+   public static void main(String[] args) {
+      System.out.println("Hello World");
+   }
+}
+
+To compile and run the above program, we first need to take care of environment setting (PATH)
+- PATH can be set temporarily on the command prompt or permanently from Environment Variables option
+  To set the path temporarily:
+  - PATH=%PATH%;D:\Apps\jdk-11.0.13\bin
+
+To compile and run the program
+- javac HelloWorld.java
+- java HelloWorld
+
+
+Basics of Java
+--------------
+- Primitive Datatypes (int, float, long, ...)
+- Nonprimitive types (Objects)
+  - String for ex. is a non primitive/object type
+  - Why? -> Because for objects memory is allocated dynamically, whereas for primitives the memory is fixed
+- Loops and Conditions (for, while, if, ...)
+- Arrays
+- OOP (classes & objects)
+  - Abstraction
+  - Encapsulation
+  - Inheritance
+  - Polymorphism
+
+
+
+
+SDLC
+
+Developer
+- Raw Materials
+  - Programming language
+- Tools & Utilities
+  - IDEs (Eclipse)
+
+Carpenter
+- Makes furnitures
+  - Table, Chair, Wardrobe, Showcase, Sofa, etc...
+
+- Raw Materials
+  - Wood/Plywood
+  - Nails
+  - Fevicol
+
+- Tools
+  - Drill Machine
+  - Saw
+  - Hammer
+
+
+

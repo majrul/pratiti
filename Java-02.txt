@@ -1,0 +1,129 @@
+OOP (classes & objects)
+- Abstraction
+- Encapsulation
+- Inheritance
+- Polymorphism
+
+Abstraction
+-----------
+- Data Abstraction
+- Method Abstraction
+
+- Data Abstraction
+public class Color {
+  int r;
+  int g;
+  int b;
+}
+
+Color c1 = new Color(127, 127, 127);
+
+
+- Method/Function Abstraction
+Suppose if i ask you to develop a Calculator in Java which will perform additions and subtractions
+The solution might look like this:
+public class Calculator {
+  public void add(int x, int y) {
+   ...
+  }
+  public void sub(int x, int y) {
+   ...
+  }
+}
+
+Another way of looking at the same thing:
+public class/interface Calculator {
+  public void add(int x, int y);
+  public void sub(int x, int y);
+}
+
+public class MyCalculator extends/implements Calculator {
+
+}
+
+
+Encapsulation
+-------------
+Binding data and functionality together in an unit
+Creating a class is as good as achieving encapsulation and abstraction
+
+Inheritance
+-----------
+IS-A relationship
+Acquiring properties of the parent by the child class
+
+class Vehicle {
+  
+  int tyres;
+
+  engine() {
+
+  }
+}
+
+class Car extends Vehicle {
+
+}
+
+class Bike extends Vehicle {
+
+}
+
+There's one more way of creating relationship between classes/objects
+HAS-A relationship (Association/Aggregation/Composition/Whole-Part)
+- Association
+  - one to one, one to many, many to many
+
+class Car {
+
+  Engine engine; //has-a
+}
+
+class Engine {
+
+}
+class V2Engine extends Engine { //is-a
+
+}
+
+class Employee {
+  int empno;
+  String name;
+  double salary;
+
+  Project project; //has-a
+}
+
+class Project {
+  String name;
+  String client;
+}
+
+Polymorphism
+------------
+One thing having many forms
+- Overloading/compiletime poymorphism/early binding
+- Overriding/runtime polymorphism/late binding
+
+API (Application Programming Interface)
+---------------------------------------
+Java provides a huge collection of ready to use API/library for various needs of a project
+For ex: java.util, java.time, java.io, java.sql, ....
+
+Thumb rule of Java
+-------------------
+There are 3 things you need to remember with regards to the nature of Java programming language:
+
+1. In some places we will create object using new keyword:
+   for ex: Scanner s = new Scanner(System.in);
+           s.nextLine();
+           Date d = new Date();
+
+2. In some places we don't need to create object to access the required functionality:
+   for ex: Math.sqrt(4), Integer.parseInt("123"), etc..
+
+3. In some places we need to create object of a class to access it's functionality,
+   but we will not be able to do it directly:
+   for ex: LocalTime t = LocalTime.now();
+           LocalDate d = LocalDate.of(1995, 12, 30);
+           String str = "Java";

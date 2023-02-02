@@ -1,0 +1,88 @@
+Exception Handling
+------------------
+- Exception -> Errors which may occur during the execution
+				of any Java application
+
+- Exception Handling -> Ability to handle those errors well in
+						advance and provide alternative course of action in the code
+
+- Errors which may occur during the execution/runtime of any application
+- Exception handling is the ability to recover from an error if possible
+- Exceptions are objects of java.lang.Exception class or any of it's subclasses
+- Exception Hierarchy
+  Object
+  - Throwable
+    - Exception
+      - used for reporting application level errors
+      - There are two types of exceptions (checked & unchecked)
+      - Exceptions are checked in nature by default
+        - it means compiler checks if you have handled the exception in the code or not
+        - in other words it's like forcing the developer to keep the exception handling code ready
+        - Ex: IOException, SQLException, ....
+        From Exception class, there is one child class by the name RuntimeException class
+        RuntimeException and it's subclasses are unchecked in nature
+        - it means compile doesn't forces you to handle the exception in the code
+        - Ex: NullPointerException, ArrayIndexOutofBoundsException, etc..
+    - Error
+      - used for reporting low level/system errors
+      - used internally by the JVM for reporting low level issues
+	    - Errors are not meant to be caught by the developer in the code
+
+TODO:
+- role of finally block
+
+
+try {
+  line 1 : DB
+  line 2 : DB
+  line 3 : Filesystem
+  line 4 : Filesystem
+  line 5 : Network
+}
+catch(SQLException e) {
+
+}
+catch(IOException e) {
+
+}
+
+
+Collections in Java
+-------------------
+- A Bag is a type of Collection
+  - A collection of more than one element
+- A tiffin box is also a type of Collection
+
+- One very common type of collection in our code is arrays
+  int[] arr = new int[5];
+  there are some limitations of arrays because of which we cannot use them everywhere in our projects
+  - arrays are fixed length in nature
+    - we can resize an array
+    - in other words an array cannot shrink/expand its size dynamically
+
+- Java provides us with lots of different types of Collections
+  - which are dynamic in nature by default
+  - 3 primary types of collections:
+    List, Set and Map
+
+  - List
+    - Duplicate elements
+    - Every element in a list has an index associated with it (similar to arrays)
+    - Ordered (the order in which you add the elements will not change when you read it back)
+    - ex: ArrayList, LinkedList, etc...
+    - TODO: Difference between ArrayList and LinkedList
+  - Set
+    - Unique elements
+    - Cannot access element by it's index/position
+    - Order may change depending upon the type of Set used
+    - ex: HashSet, LinkedHashSet, TreeSet, etc..
+  - Map
+    - Commonly referred to as Dictionary in other languages
+    - Used for storing data in the form of pairs (key & value)
+    - for ex: we want to store empno as key and employee details as value
+    - key has to be unique, value can be duplicate
+  
+
+
+    
+
