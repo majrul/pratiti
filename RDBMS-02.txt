@@ -1,0 +1,22 @@
+Normalization
+- 1NF -> Columns in the table should be atomic (single value)
+- 2NF -> Columns in the table should not have partial 
+		dependency (should be fully dependent on PK)
+- 3NF -> Columns in the table should not have transitive 			dependency (cannot have columns which depend on 
+					other non pk columns)
+
+
+TODO:
+-> Example on Savepoint
+
+
+Views
+------
+- Logical subset or combination of data from one or more tables
+
+- View does not contains data of it's own, it's just like a window through which data from the tables  can be viewed or changed
+
+
+
+
+

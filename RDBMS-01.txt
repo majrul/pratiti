@@ -1,0 +1,235 @@
+RDBMS
+- Oracle, MySQL, ...
+
+- SQL
+  - DDL–DML–DQL–DCL–TCL
+
+DQL
+- SELECT Queries
+
+
+We'll be using HR schema
+
+- LiveSQL
+   - select * from hr.employees;
+
+- SELECT Queries
+  - Fetching data from tables/views
+  The important part of SELECT:
+  - Projection
+  	- Columns
+  - Restriction
+  	- Rows
+
+SUB Queries
+- Used for fetching data based on unknown values
+- Ex: I want to fetch those employees whose
+	  salary is greater than the salary of John
+- Why subquery?
+	- First i need to find what's the salary of John
+	- Then i need to find all the employees required
+
+ -- Fetch only those employees whose salary is atleast 5000
+SELECT * FROM hr.employees WHERE salary >= 5000
+
+-- Fetch employees who joined in the month of October
+
+SELECT * FROM hr.employees 
+WHERE TO_CHAR(hire_date, 'MON') = 'OCT';
+
+-- Fetch employees whose hire date(month) is matching the hire date (month) of John
+
+
+SELECT * FROM hr.employees 
+WHERE TO_CHAR(hire_date, 'MON') = 
+	(SELECT TO_CHAR(hire_date, 'MON') FROM hr.employees
+		WHERE first_name = 'John' AND last_name = 'Russell')
+
+
+-- Fetch employees who don't have a manager
+
+SELECT * FROM hr.employees WHERE manager_id IS NULL;
+
+-- Fetch employees whose manager is same as the manager of John Russell
+
+SELECT * FROM hr.employees WHERE manager_id = 
+	(SELECT manager_id FROM hr.employees
+		WHERE first_name = 'John' AND last_name = 'Russell')
+
+
+-Concatenate first name and last name
+
+SELECT first_name || last_name, salary FROM hr.employees;
+
+SELECT first_name || ' ' || last_name, salary 
+FROM hr.employees;
+
+SELECT first_name || ' ' || last_name AS full_name, 
+salary AS sal FROM hr.employees;
+
+
+- Functions
+	- Single row functions
+		- Single input, Single output
+			TO_CHAR, UPPER, LOWER, ...
+	- Multi row functions
+		- Multiple input, Single output
+			MIN, MAX, AVG, ...
+
+SELECT UPPER(first_name) FROM hr.employees;
+
+SELECT MIN(salary) FROM hr.employees;
+
+-- Fetch the details of employee with the lowest salary
+
+
+Assume the employee table contains the following details:
+
+empno	first_name	salary	hire_date	department_id
+1001	A 			10000	10-JAN		10
+1002	B			15000	10-JAN		20
+1003	C 			10000	10-JAN		30
+1004	D 			20000	10-JAN		10
+1005	E 			15000	10-JAN		10
+1006	F 			25000	10-JAN		20
+1007	G 			10000	10-JAN		30
+
+
+-- Fetch department wise highest salary
+
+SELECT department_id, MAX(salary) FROM hr.employees
+GROUP BY department_id;
+
+
+SELECT department_id, AVG(salary) FROM hr.employees
+GROUP BY department_id 
+HAVING AVG(salary) > 5000
+
+Assume the employee table contains the following details:
+
+empno	first_name	salary	job_id	department_id
+1001	A 			10000	HR		10
+1002	B			15000	IT		20
+1003	C 			10000	ACC		30
+1004	D 			20000	HR		10
+1005	E 			15000	IT		10
+1006	F 			25000	IT		20
+1007	G 			10000	ACC		30
+
+-- Fetch department and job title wise average salary
+
+SELECT department_id, job_id, AVG(salary) FROM hr.employees
+GROUP BY department_id, job_id;
+
+
+Joins
+- Fetching data from one or more table
+- Minimum no. of joins = (no. of tables - 1)
+- To join multiple tables, there has to be a matching column
+	- (matching column does not means the column name has
+	   to be same, the data type has to match)
+- The columns involved in the join need not be pk-fk pair
+
+Basically there are 2 types of joins, inner and outer
+
+inner
+- equi join is another name for inner join
+- natural join is similar to inner join
+
+outer
+- left
+- right
+- full
+
+cartesian product is also called as cross join
+
+- fetch name, salary and department name
+
+-- Old syntax
+SELECT employee_id, first_name, salary, department_name
+FROM hr.employees, hr.departments
+WHERE 
+hr.employees.department_id = hr.departments.department_id
+
+-- ANSI SQL 99 Syntax
+SELECT employee_id, first_name, salary, department_name
+FROM hr.employees JOIN hr.departments
+ON 
+hr.employees.department_id = hr.departments.department_id
+
+-- Using aliases
+SELECT employee_id, first_name, salary, department_name
+FROM hr.employees emp JOIN hr.departments dept
+ON 
+emp.department_id = dept.department_id
+
+SELECT emp.employee_id, emp.first_name, emp.salary, dept.department_name
+FROM hr.employees emp JOIN hr.departments dept
+ON 
+emp.department_id = dept.department_id
+
+-- Fetch name, salary and job title of all the employees
+
+SELECT e.first_name, e.salary, j.job_title
+FROM hr.employees e JOIN hr.jobs j
+ON 
+e.job_id = j.job_id
+
+
+Fetch employee name, department name and department's location for the employees
+
+SELECT e.first_name, d.department_name, l.street_address
+FROM hr.employees e
+JOIN hr.department d ON e.department_id = d.department_id
+JOIN hr.locations l ON d.location_id = l.location_id
+
+
+Example on left outer join
+
+-- fetch employee and department details even for those
+	employees who don't have a department
+
+SELECT employee_id, first_name, salary, department_name
+FROM hr.employees emp 
+LEFT JOIN hr.departments dept 
+ON emp.department_id = dept.department_id
+
+- TODO:
+	When do we use full outer join, an example on it
+
+- Self Join (Joining with the same table)
+
+- Fetch name of the employee along with the manager's name
+
+SELECT e.first_name AS emp_name,
+		m.first_name AS manager_name
+FROM
+	hr.employees e
+JOIN
+	hr.employees m
+ON
+	e.manager_id = m.employee_id
+
+
+- Cross Join
+
+
+SELECT e1.first_name, e1.salary,
+		e2.first_name, e2.salary
+FROM hr.employees e1
+CROSS JOIN hr.employees e2
+WHERE e1.job_id = 'IT_PROG'
+
+
+
+FETCH THE TOTAL NO. OF EMPS
+ALONG WITH TOTAL OF HOW MANY EMPS JOINED IN 2001, 2002 AND 2003
+
+
+
+
+
+
+
+
+
