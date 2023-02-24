@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>spring-webapp</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Configuration required for using Spring in a Web application 
+  		This servlet plays of the role of Front controller when using
+  		Spring for developing web applications. 
+  		Also we won't need to write this code anymore:
+  			ApplicationContext ctx = new ClassPathXmlApplicationContext("my-spring-config.xml");
+  		This Servlet will create the ApplicationContext object automatically.
+  		We can specify the name of the xml file to be read as a context parameter.	
+  -->
+  <servlet>
+  	<servlet-name>mvc</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>/WEB-INF/my-spring-config.xml</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>mvc</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+    
+</web-app>
